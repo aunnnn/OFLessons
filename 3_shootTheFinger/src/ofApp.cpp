@@ -30,6 +30,7 @@ void ofApp::setup(){
     reset();
     
     ofSetCircleResolution(50);
+	ofSetFrameRate(60);
     
     cout << vidGrabber.getWidth() << " x " <<vidGrabber.getHeight() << " x " << endl;
 

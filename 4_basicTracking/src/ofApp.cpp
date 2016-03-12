@@ -11,8 +11,8 @@ void ofApp::setup(){
     
     gui.loadFromFile("settings.xml");
     
-    // inladen demo image
-    testImage.load("test.JPG");
+	// loading of the demo image
+	testImage.load("test.JPG");
 
     float w = testImage.getWidth();
     float h = testImage.getHeight();
@@ -29,8 +29,9 @@ void ofApp::setup(){
 //--------------------------------------------------------------
 void ofApp::update(){
     
-    // omzetten van de image naar opencv
-    colorImg.setFromPixels(testImage.getPixels());
+	// convert the testimage to a opencv image
+	colorImg.setFromPixels(testImage.getPixels());
+	// convert the color image tot grayscale
     grayImage = colorImg;
     
     grayImage.invert();

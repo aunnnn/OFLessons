@@ -2,6 +2,7 @@
 ** Work in progress **
 
 Clone this repository in /openframworks/apps/
+All samples are tested with the latest OF 0.93 on Windows and OSX
 
 Getting familiar with drawing and setting up new files and classes.
 ![Image](/Images/1_drawSample.png)
