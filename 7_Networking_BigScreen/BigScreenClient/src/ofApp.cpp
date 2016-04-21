@@ -2,12 +2,14 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    clientSender.setup("127.0.0.1", 9000);
+    clientSender.setup("10.3.23.124", 9000);
     clientReceiver.setup(9001);
     
     id= -1;
-   // ofSetFullscreen(true);
+    ofSetFullscreen(true);
     ofSetFrameRate(60);
+    
+    image.load("image.jpg");
 }
 
 //--------------------------------------------------------------
@@ -53,8 +55,20 @@ void ofApp::draw(){
     }
     
     ofSetColor(255,210,0);
-    ofDrawCircle(position,20);
-
+    
+    ofPushMatrix();
+    ofTranslate(position);
+    ofDrawCircle(0,0,20);
+    
+    ofRotate(ofGetElapsedTimef()*100.0);
+    ofDrawCircle(20 + fabs(sin(ofGetElapsedTimef() * 4) * 10), 0, 4);
+    ofDrawCircle(-20 - fabs(sin(ofGetElapsedTimef() * -4) * 10), 0, 4);
+    
+    ofPopMatrix();
+    
+    
+    
+    
 }
 
 //--------------------------------------------------------------

@@ -14,3 +14,9 @@ Make your own tracking by drawing on white paper without subtraction.
 ![Image](/Images/4_basicTracking.png)
 Getting familiar on working in 3D space in OF.
 ![Image](/Images/5_3D_space.png)
+Connecting an Arduino.
+![Image](/Images/6_arduino.png)
+Networking OSC client & Server.
+![Image](/Images/7_Networking_OSC.png)
+Using Box2D & projection
+![Image](/Images/8_Box2D.png)

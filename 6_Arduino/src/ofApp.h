@@ -13,11 +13,7 @@ class ofApp : public ofBaseApp{
     ofSoundPlayer 		sound;
     string tmpBuffer = "";
     ofImage disc;
-    float 	* fftSmoothed;
-    int nBandsToGet;
-    
-    float kick;
-    ofTrueTypeFont  franklinBook14;
+    ofTrueTypeFont  fontType;
 
 
 	public:
