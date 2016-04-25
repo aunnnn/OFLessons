@@ -20,7 +20,7 @@
 **/bin/*.exp
 **/bin/*.pdb
 **/bin/*.lib
-
+**/data/sounds
 
 # XCode
 *.pbxuser

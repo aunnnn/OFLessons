@@ -2,11 +2,32 @@
 
 #include "ofMain.h"
 #include "uiNode.hpp"
+#include "ofxGui.h"
 
 class ofApp : public ofBaseApp{
 
     
     uiNode  menu;
+    ofSoundPlayer soundPlayer;
+    
+    ofCamera camera;
+    ofLight pointLight1;
+    ofLight pointLight2;
+    
+
+    ofxPanel  panel;
+    ofxSlider<float>  kickFallOff;
+    ofxSlider<float>  radius;
+    ofxSlider<float>  increaseRadius;
+    
+    ofxVec3Slider     cameraPostion;
+    ofxVec3Slider     cameraLookAt;
+    
+    float 	*fftSmoothed;
+    int     nBandsToGet;
+    float   kick;
+    float   rotation;
+    
     
 	public:
 		void setup();
@@ -19,10 +40,7 @@ class ofApp : public ofBaseApp{
 		void mouseDragged(int x, int y, int button);
 		void mousePressed(int x, int y, int button);
 		void mouseReleased(int x, int y, int button);
-		void mouseEntered(int x, int y);
-		void mouseExited(int x, int y);
-		void windowResized(int w, int h);
-		void dragEvent(ofDragInfo dragInfo);
-		void gotMessage(ofMessage msg);
-		
+
+        void clickedInside(string& name);
+
 };

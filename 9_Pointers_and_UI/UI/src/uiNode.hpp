@@ -19,11 +19,12 @@ class uiNode{
     uiNode* parent;
     string name;
     bool childrenEnabled;
-    
+
 public:
     
     uiNode();
-    
+    ofEvent<string> clickedInside;
+
     ofVec2f position;
     ofRectangle boundingBox;
 
@@ -43,8 +44,11 @@ public:
     void setName(string newName);
     void getName();
     
-    void enableChildren(bool value);
     
+    ofVec2f getGlobalPosition();
+    
+    void enableChildren(bool value);
+    bool hasChildrenEnabled();
 };
 
 

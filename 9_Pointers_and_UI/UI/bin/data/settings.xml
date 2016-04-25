@@ -1,0 +1,8 @@
+<group>
+	<kickFallOff>0.42</kickFallOff>
+	<radius>8</radius>
+	<increaseRadius>1.05</increaseRadius>
+	<cameraLookAt>-13.2653, 12.2449, 7.14285</cameraLookAt>
+	<cameraPostion>-66.3265, 44.898, 12.2449</cameraPostion>
+<group/>
+</group>

@@ -11,6 +11,7 @@
 
 uiNode::uiNode(){
     name = "";
+    parent  = nullptr;
     childrenEnabled = true;
 }
 
@@ -46,6 +47,10 @@ void uiNode::enableChildren(bool value){
     childrenEnabled = value;
 }
 
+bool uiNode::hasChildrenEnabled(){
+    return childrenEnabled;
+}
+
 
 void uiNode::update(){
     
@@ -57,11 +62,11 @@ void uiNode::draw(){
     ofTranslate(position);
     
     ofFill();
-    ofSetLineWidth(4);
-    ofSetColor(55, 255, 155,20);
+    ofSetLineWidth(2);
+    ofSetColor(55, 55, 55,20);
     ofDrawRectangle(boundingBox);
     ofNoFill();
-    ofSetColor(255, 255, 155,255);
+    ofSetColor(55, 55, 55,255);
     ofDrawRectangle(boundingBox);
 
     if(name != "") ofDrawBitmapString(name, 10,15);
@@ -72,14 +77,48 @@ void uiNode::draw(){
         }
     }
     
+    ofFill();
+
     ofPopMatrix();
     
 }
+
+
+ofVec2f uiNode::getGlobalPosition(){
+    ofVec2f globalPosition = position;
+    
+    if(parent != nullptr){
+        globalPosition += parent->getGlobalPosition();
+    }
+    
+    return globalPosition;
+}
+
 
 void uiNode::mouseDown(float x,float y){
     
 }
 
 void uiNode::mouseUp(float x,float y){
+    ofRectangle globalBoundingBox = boundingBox;
+    ofVec2f globalPosition = getGlobalPosition();
+    
+    globalBoundingBox.x += globalPosition.x;
+    globalBoundingBox.y += globalPosition.y;
+    
+    if(globalBoundingBox.inside(x, y)){
+        cout << "BANG!" << name << std::endl;
+        ofNotifyEvent(clickedInside, name, this);
+
+    }
+    
+    if(childrenEnabled){
+        for(uiNode* child : children){
+            child->mouseUp(x, y);
+        }
+    }
+
+    
+    
     
 }

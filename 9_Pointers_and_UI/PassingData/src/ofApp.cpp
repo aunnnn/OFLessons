@@ -4,7 +4,7 @@
 
 void processDataByValue(vector<float> data){
     
-    float total = 0;;
+    float total = 0;
     for (float f : data) {
         total += f;
     }
@@ -12,7 +12,7 @@ void processDataByValue(vector<float> data){
 
 
 void processDataReference(vector<float>& data){
-    float total = 0;;
+    float total = 0;
     for (float f : data) {
         total += f;
     }
