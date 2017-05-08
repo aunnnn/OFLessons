@@ -37,7 +37,7 @@ void ofApp::update(){
 void ofApp::draw(){
 
 	// uncomment this to see how a shape is composed
-	glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
     // use the & sign to create a reference instead of a copy.
     for (eyeBox& eye : eyes) {

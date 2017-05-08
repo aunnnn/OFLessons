@@ -71,7 +71,7 @@ void ofApp::update(){
         sound.setSpeed(speed);
     }
     
-    rotation += (speed * .09);
+    rotation += (speed * 2.09);
 
     
     ofSoundUpdate();

@@ -121,12 +121,17 @@ void ofApp::sendIdAndWidth(networkClient* client){
 
 void ofApp::broadCast(ofVec2f position){
     
-    ofxOscMessage message;
-    message.setAddress("/broadcast");
-    message.addFloatArg(position.x);
-    message.addFloatArg(position.y);
-
+    float offset=0;
     for(networkClient& c : clients){
+        
+        ofxOscMessage message;
+        message.setAddress("/broadcast");
+        message.addFloatArg(position.x);
+        message.addFloatArg(position.y);
+        message.addFloatArg(offset);
+        
+        offset += c.width;
+
         c.oscSender.sendMessage(message);
     }
 }
@@ -143,6 +148,18 @@ void ofApp::draw(){
     ofSetColor(255,210,0);
     
     ofDrawCircle(localX, 50,20);
+    
+    int i = 1;
+    
+    ofSetColor(0,0,0);
+
+    for(networkClient& c : clients){
+        string test = ofToString(i) + ":" + c.ip + " -- " + ofToString(c.width);
+        fontSmall.drawString(test , 660, 20 + (i * 20));
+        i++;
+        //c.oscSender.sendMessage(message);
+    }
+
 }
 
 //--------------------------------------------------------------

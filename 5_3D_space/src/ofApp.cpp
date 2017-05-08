@@ -17,6 +17,8 @@ void ofApp::setup(){
     ofEnableDepthTest();
     space.load("space.jpg");
     
+    
+    
     drawingMode = 0;
 }
 

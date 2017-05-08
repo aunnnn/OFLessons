@@ -23,6 +23,8 @@ Using Box2D & projection
 ![Image](/Images/8_Box2D.png)
 Usage of pointers and some extra eyecandy to make it more fun.
 ![Image](/Images/9_UI_and_sound.png)
+Kaleidoscope: ofMesh and texture exercise.
+![Image](/Images/10_Kaleidoscope.png)
 Another simple particle example
 ![Image](/Images/extra_particles.png)
 

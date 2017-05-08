@@ -9,6 +9,7 @@ class ofApp : public ofBaseApp{
     ofLight pointLight1;
     ofLight pointLight2;
     
+    
     ofImage space;
     
     int drawingMode;
