@@ -20,14 +20,9 @@ void ofApp::setup(){
         for(int y=h; y < ofGetWindowHeight() + h * 2; y+=(h*2)){
             int newY = y + ((yOffset) ? -h : 0);
             createMesh(ofVec2f(x,newY));
-        }
-        
+        }        
         yOffset = !yOffset;
     }
-    
-    
-    //createMesh(ofVec2f(100,h*3));
-    //createMesh(ofVec2f(100,h*3));
 
 }
 
