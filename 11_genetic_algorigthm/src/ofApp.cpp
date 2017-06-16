@@ -170,7 +170,8 @@ void ofApp::draw(){
     ofDrawBitmapString("wins " + ofToString(wins) + " / " + ofToString(nrOfSimulations), 600, 80);
     if(wins>0) ofDrawBitmapString("fastest wins " + ofToString(firstWin), 600, 100);
     
-    ofDrawBitmapString("GENERATTION " + ofToString(currentGeneration), 600, 120);
+    ofDrawBitmapString("GENERATION " + ofToString(currentGeneration), 600, 120);
+    ofDrawBitmapString("press <any key> to toggle replay" , 600, 140);
     
     gui.draw();
     
