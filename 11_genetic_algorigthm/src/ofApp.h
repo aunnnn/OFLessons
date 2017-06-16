@@ -3,6 +3,7 @@
 #include "ofMain.h"
 
 #include "Rocket.hpp"
+#include "Obstacle.h"
 #include "ofxGui.h"
 
 
@@ -12,10 +13,11 @@ class ofApp : public ofBaseApp{
     ofxPanel gui;
     ofxFloatSlider mutationFactor;
     ofxFloatSlider aliveRewardFactor;
+    ofxFloatSlider distanceRewardFactor;
     ofxFloatSlider interPolationFactor;
 
     vector<Rocket*> rockets;
-    vector<ofRectangle> obstacles;
+    vector<Obstacle> obstacles;
     
     // used to make a new selection;
     vector<DNA> newDNAset;
@@ -24,6 +26,8 @@ class ofApp : public ofBaseApp{
     ofVec2f startDrag;
     ofVec2f targetPosition;
     ofVec2f startPosition;
+    
+    bool replayMode =false;
     
     int nrOfFrames;
     int wins;
@@ -36,6 +40,8 @@ class ofApp : public ofBaseApp{
     float bestFitness;
     long avgFitness;
     
+    void createNewSelection();
+    
 	public:
 		void setup();
 		void update();
@@ -47,10 +53,4 @@ class ofApp : public ofBaseApp{
 		void mouseDragged(int x, int y, int button);
 		void mousePressed(int x, int y, int button);
 		void mouseReleased(int x, int y, int button);
-		void mouseEntered(int x, int y);
-		void mouseExited(int x, int y);
-		void windowResized(int w, int h);
-		void dragEvent(ofDragInfo dragInfo);
-		void gotMessage(ofMessage msg);
-		
 };

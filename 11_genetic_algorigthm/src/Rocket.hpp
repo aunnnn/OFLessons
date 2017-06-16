@@ -10,6 +10,7 @@
 
 #include "ofMain.h"
 #include "DNA.hpp"
+#include "Obstacle.h"
 
 class Rocket{
     
@@ -21,6 +22,8 @@ class Rocket{
 public:
     bool isDead;
     bool isWinner;
+    bool isReplay;
+    
     int framesToWin;
     float bestDistanceToTarget;
     float aliveFrames;
@@ -28,12 +31,12 @@ public:
     DNA dna;
     ofVec2f position;
 
-    void setStartValues();
+    void setStartValues(ofVec2f startPosition);
     
     Rocket(ofVec2f newPosition);
     
     void setup();
-    void update(int frameIndex,vector<ofRectangle>& obstacles, float interpolationFactor);
+    void update(int frameIndex,vector<Obstacle>& obstacles, float interpolationFactor);
     void checkDistance(ofVec2f& target);
     void draw();
     

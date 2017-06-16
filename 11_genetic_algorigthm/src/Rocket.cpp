@@ -15,7 +15,7 @@ Rocket::Rocket(ofVec2f newPosition){
 }
 
 
-void Rocket::update(int frameIndex,vector<ofRectangle>& obstacles,float interpolationFactor){
+void Rocket::update(int frameIndex,vector<Obstacle>& obstacles,float interpolationFactor){
     
     if(isDead) return;
     
@@ -32,12 +32,13 @@ void Rocket::update(int frameIndex,vector<ofRectangle>& obstacles,float interpol
 
     
     
-    for(ofRectangle& r : obstacles){
+    for(Obstacle& r : obstacles){
         
         ofVec2f closestPoint (ofClamp(position.x, r.x, r.x + r.width),ofClamp(position.y, r.y, r.y + r.height));
         
         if(closestPoint.distance(position) < radius){
             isDead = true;
+            r.isHit = true;
             return;
         }
     }
@@ -50,15 +51,17 @@ void Rocket::checkDistance(ofVec2f &target){
 }
 
 
-void Rocket::setStartValues(){
+void Rocket::setStartValues(ofVec2f startPosition){
     
     direction = dna.direction[0];
     speed = dna.speed[0];
     isDead = false;
     isWinner = false;
+    //isReplay = false;
     aliveFrames =0;
     framesToWin =0;
     bestDistanceToTarget = 1000000;
+    position = startPosition;
 }
 
 void Rocket::draw(){
