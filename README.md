@@ -1,6 +1,7 @@
 # OFLessons
 Samples used in a openframeWorks course which I teach at EHB brussels.
-Covering different topic. Always interested in giving this course at other places if somebody is interested.
+Covering different topics. 
+Always interested in giving this course at other places if somebody is interested.
 
 Clone this repository in /openframworks/apps/
 All samples are tested with the latest OF 0.93 on Windows and OSX
