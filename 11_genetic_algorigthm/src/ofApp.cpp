@@ -3,8 +3,8 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
-    ofSetWindowShape(1200, 900);
-    ofSetBackgroundColor(100, 130, 130);
+    ofSetWindowShape(1200, 800);
+    ofSetBackgroundColor(140);
     
     startDrag.set(-1,-1);
     nrOfFrames = 50;
@@ -143,7 +143,7 @@ void ofApp::draw(){
     for(Obstacle& r : obstacles)
     {
         if(r.isHit) ofSetColor(255, 210, 213);
-        else ofSetColor(200, 240, 240);
+        else ofSetColor(240, 240, 240);
         ofDrawRectangle(r);
     }
 
@@ -174,7 +174,8 @@ void ofApp::draw(){
     ofDrawBitmapString("wins " + ofToString(wins) + " / " + ofToString(nrOfSimulations), 600, 80);
     if(wins>0) ofDrawBitmapString("fastest wins " + ofToString(firstWin), 600, 100);
     
-    ofDrawBitmapString("GENERATTION " + ofToString(currentGeneration), 600, 120);
+    ofDrawBitmapString("GENERATION " + ofToString(currentGeneration), 600, 120);
+    ofDrawBitmapString("press <any key> to toggle replay" , 600, 140);
     
     gui.draw();
     
