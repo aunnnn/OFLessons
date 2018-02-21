@@ -1,8 +1,11 @@
 # OFLessons
 ** Work in progress **
 
-Clone this repository in /openframworks/apps/
-All samples are tested with the latest OF 0.93 on Windows and OSX
+Clone this repository in /openframworks/apps/  
+All samples are tested with the latest OF 0.93 on Windows and OSX.  
+Use the project generator to update the solution for your platform.  
+
+Most of the samples can be made fancier or more performant but for educational purpose they are as simple as possible.  
 
 Getting familiar with drawing and setting up new files and classes.
 ![Image](/Images/1_drawSample.png)

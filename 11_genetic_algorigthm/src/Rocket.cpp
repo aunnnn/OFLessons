@@ -67,11 +67,11 @@ void Rocket::setStartValues(ofVec2f startPosition){
 void Rocket::draw(){
 
     if(isWinner){
-        ofSetColor(0, 255, 0);
+        ofSetColor(255, 255, 255);
     }else if(isDead){
         ofSetColor(255, 0, 0);
     }else{
-        ofSetColor(0,255,255,200);
+        ofSetColor(255,255,255,200);
         ofDrawArrow(position, position + (direction *speed  * 10),4);
     }
     

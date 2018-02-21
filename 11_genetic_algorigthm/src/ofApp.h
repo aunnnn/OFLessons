@@ -27,7 +27,8 @@ class ofApp : public ofBaseApp{
     ofVec2f targetPosition;
     ofVec2f startPosition;
     
-    bool replayMode =false;
+    bool replayMode = false;
+    bool isRunning = false;
     
     int nrOfFrames;
     int wins;

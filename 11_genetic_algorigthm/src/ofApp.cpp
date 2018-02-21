@@ -3,19 +3,21 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
-    //ofSetBackgroundColor(190, 190, 199);
+    ofSetWindowShape(1200, 900);
+    ofSetBackgroundColor(100, 130, 130);
     
     startDrag.set(-1,-1);
     nrOfFrames = 50;
     currentFrame = 0;
     newDNAset.reserve(100);
     currentGeneration=1;
-    nrOfSimulations = 600;
+    nrOfSimulations = 300;
     wins = 0;
     firstWin  = 100000;
     
     // when on it only displays the winners without making new generations.
     replayMode = false;
+    isRunning = false;
     
     targetPosition.set(800,500);
     startPosition.set(80,400);
@@ -54,6 +56,8 @@ void ofApp::setup(){
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    
+    if(!isRunning) return;
     
     if((int)currentFrame >= nrOfFrames){
         // new selection
@@ -121,7 +125,7 @@ void ofApp::draw(){
     if(wins < 1){
         ofSetColor(255, 0, 0);
     }else{
-        ofSetColor(50, 155, 50);
+        ofSetColor(0, 255, 0);
 
     }
     ofDrawCircle(targetPosition,10);
@@ -139,7 +143,7 @@ void ofApp::draw(){
     for(Obstacle& r : obstacles)
     {
         if(r.isHit) ofSetColor(255, 210, 213);
-        else ofSetColor(240, 240, 240);
+        else ofSetColor(200, 240, 240);
         ofDrawRectangle(r);
     }
 
@@ -240,7 +244,9 @@ void ofApp::keyPressed(int key){
 
 //--------------------------------------------------------------
 void ofApp::keyReleased(int key){
-    replayMode = !replayMode;
+    
+    if(key == 'r') replayMode = !replayMode;
+    if(key == ' ') isRunning = !isRunning;
 }
 
 //--------------------------------------------------------------
