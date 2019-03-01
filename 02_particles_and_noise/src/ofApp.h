@@ -1,9 +1,17 @@
 #pragma once
 
 #include "ofMain.h"
+#include "Particle.hpp"
+
 
 class ofApp : public ofBaseApp{
 
+    
+    vector<Particle> particles;
+    
+    
+    
+    
 	public:
 		void setup();
 		void update();
