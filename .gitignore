@@ -23,26 +23,26 @@
 **/data/sounds
 
 # XCode
-*.pbxuser
-*.perspective
-*.perspectivev3
-*.mode1v3
-*.mode2v3
-# XCode 4
-xcuserdata
-*.xcworkspace
+*.xcodeproj
+Project.xcconfig
+openFrameworks-Info.plist
+ofxiOS-Info.plist
+ofxiOS_Prefix.pch
 
 # Code::Blocks
-*.depend
-*.layout
+*.cbp
+*.workspace
 
 # Visual Studio
-*.sdf
-*.opensdf
-*.suo
-*.pdb
-*.ilk
-*.aps
+*.sln
+*.vcxproj
+*.vcxproj.user
+*.vcxproj.filters
+
+
+
+
+
 ipch/
 
 

@@ -1,22 +1,18 @@
-
-
 #pragma once
 #include "ofMain.h"
 
 
 class Particle{
   
-    
+    float hueOffset;
+
 public:
     
     ofVec2f position;
-    float   speed;
-    
-    
     ofVec2f direction;
-    float hueOffset;
-    
-    void setup(ofVec2f newPosition, ofVec2f newDirection,float newSpeed);
+    float   speed;
+
+    void setup();
     void update();
     void draw();
     

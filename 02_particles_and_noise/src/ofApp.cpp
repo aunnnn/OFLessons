@@ -1,101 +1,106 @@
 #include "ofApp.h"
 
+
+
+
 //--------------------------------------------------------------
 void ofApp::setup(){
 
     ofSetFrameRate(60);
-    ofSetBackgroundColor(55, 106, 168);
-    ofSetBackgroundColor(175, 226, 255);
     
-    ofSetFullscreen(true);
+    //ofSetFullscreen();
     ofHideCursor();
     
-    for(int i =0; i < 1000; i++){
+    for(int i =0; i < 3500; i++){
+
         Particle p;
-        
-        // start position
-        float xRandom = ofRandom(-400, 200);
-        float yRandom = ofRandom(200, ofGetHeight() - 200);
+        p.setup();
+        setParticleStartPosition(p.position);
+        setParticleStartDirection(p.direction);
 
-        ofVec2f startPosition(xRandom,yRandom);
-
-        // direction
-        float xDirRandom = ofRandom(0.7,1.0);
-        float yDirRandom = ofRandom(-0.1,0.1);
-        
-        ofVec2f startDirection(xDirRandom,yDirRandom);
-    
-        float randomSpeed = ofRandom(0.1, 3.7);
-    
-        p.setup(startPosition, startDirection, randomSpeed);
         particles.push_back(p);
         
-        
     }
-    
 }
+
+
+void ofApp::setParticleStartPosition(ofVec2f& incomingPosition){
+
+    float xRandom = ofRandom(-ofGetWindowWidth(), 0);
+    float yRandom = ofRandom(500, ofGetHeight() - 500);
+    
+    incomingPosition.set(xRandom,yRandom);
+}
+
+
+void ofApp::setParticleStartDirection(ofVec2f& incomingDirection){
+
+    float xDirRandom = ofRandom(0.7,1.0);
+    float yDirRandom = ofRandom(-0.1,0.1);
+    
+    incomingDirection.set(xDirRandom,yDirRandom);
+}
+
+
 
 //--------------------------------------------------------------
 void ofApp::update(){
     
     for(int i=0; i < particles.size(); i++){
         
-        // limit speed;
-        float minSpeed = 0.014;
         
-        particles[i].speed = ofClamp(particles[i].speed, minSpeed, 10);
+        // decide where to sample in the 2D noisemap
+        // by multiplying the particle x and y we stretch the shape.
+        // by adding the time to the x postion we slide horizontally through the noisemap.
         
-     //   float n = ofNoise(particles[i].position.x * 0.01,ofGetElapsedTimef() * 0.01 );
-      //  particles[i].direction.y += (n-0.5);
-        particles[i].direction.normalize();
+        float noiseSamplePositionX = particles[i].position.x * 0.001 + (ofGetElapsedTimef() * 0.55);
+        float noiseSamplePositionY = particles[i].position.y * 0.001; // + (ofGetElapsedTimef() * 0.001);
         
-        particles[i].update();
+        // signed noise will give us a result between -1 and 1
+        float noiseYDirection = ofSignedNoise(noiseSamplePositionX , noiseSamplePositionY);
+        noiseYDirection *= 0.88;
 
+        // bending the current y direction to the new calculated noiseResult.
+        // the interpolation factor decides how much we take from new direction.
+        float interpolationFactor = 0.023;
+        particles[i].direction.y += (noiseYDirection - particles[i].direction.y) * interpolationFactor;
+
+        
+        // now we change the speed
+        float newSpeed = ofNoise(noiseSamplePositionX * 0.2 , noiseSamplePositionY * 0.8) * 4.0f;
+        // we use a pow to make the fast ones faster.
+        newSpeed = pow(newSpeed,2.7);
+        // add a minimum speed
+        newSpeed += 2;
+        
+        // the interpolation factor decides how much we take from new direction.
+        interpolationFactor = 0.1;
+        particles[i].speed += (newSpeed - particles[i].speed) * interpolationFactor;
+
+
+        particles[i].update();
+        
+        // reset the particle when outsides the screen.
+        if(particles[i].position.x > ofGetWindowWidth()){
+            setParticleStartPosition(particles[i].position);
+            setParticleStartDirection(particles[i].direction);
+        }
     }
     
 }
 
+
+
 //--------------------------------------------------------------
 void ofApp::draw(){
     
-    ofSetLineWidth(0.5);
+    ofClear(2,0,23);
     
     for(int i=0; i < particles.size(); i++){
         particles[i].draw();
-        ofVec2f position1 = particles[i].position;
-
-        int maxConnections = 14;
-        
-        if(particles[i].speed > 3){
-            for(int j=0; j < particles.size(); j++){
-
-
-                ofVec2f position2 = particles[j].position;
-
-                float distance = position1.distance(position2);
-
-                if(distance > 4 && distance <  140){
-                    //ofSetLineWidth(1);
-                   // ofDrawLine(position1,position2);
-
-                    ofVec2f mid = position1.interpolate(position2, 0.5);
-                    //particles[i].direction.interpolate(particles[j].direction, 0.01);
-                    ofSetColor(255, 255, 255);
-                    ofSetColor(255, 120, 255);
-                    ofSetCircleResolution(3);
-
-                    ofDrawCircle(mid, 2);
-                    maxConnections--;
-                }
-
-                if(maxConnections == 0) break;
-
-
-            }
-        }
-        
     }
     
+    // using a circle as mousecursor
     ofSetColor(255, 255, 255);
     ofDrawCircle(ofGetMouseX(), ofGetMouseY(), 4);
     
@@ -103,22 +108,6 @@ void ofApp::draw(){
 
 
 
-
-
-
-
-
-
-
-//--------------------------------------------------------------
-void ofApp::keyPressed(int key){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::keyReleased(int key){
-
-}
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
@@ -140,27 +129,3 @@ void ofApp::mouseReleased(int x, int y, int button){
 
 }
 
-//--------------------------------------------------------------
-void ofApp::mouseEntered(int x, int y){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::mouseExited(int x, int y){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::windowResized(int w, int h){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::gotMessage(ofMessage msg){
-
-}
-
-//--------------------------------------------------------------
-void ofApp::dragEvent(ofDragInfo dragInfo){ 
-
-}

@@ -12,7 +12,7 @@ Most of the samples can be made fancier or more performant but for educational p
 Getting familiar with drawing and setting up new files and classes.
 ![Image](/Images/1_drawSample.png)
 Using Noise and particles.
-![Image](/Images/2_particles_and_noise.png)
+![Image](/Images/2_particles_and_noise.jpg)
 More particles and blob tracking with background subtraction.  
 Short demo video: https://www.instagram.com/p/BCN23Tolh8D/
 ![Image](/Images/3_shootTheFinger.png)
@@ -24,9 +24,6 @@ Connecting an Arduino.
 ![Image](/Images/6_arduino.png)
 Networking OSC client & Server.
 ![Image](/Images/7_Networking_OSC.png)
-Using Box2D & projection  
-Short demo video:  https://www.instagram.com/p/2QWyGWFh3N/
-![Image](/Images/8_Box2D.png)
 Usage of pointers and some extra eyecandy to make it more fun.
 ![Image](/Images/9_UI_and_sound.png)
 Kaleidoscope: ofMesh and texture exercise.    
