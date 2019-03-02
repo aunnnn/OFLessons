@@ -27,7 +27,7 @@ void ofApp::setup(){
 }
 
 
-void ofApp::createMesh(ofVec2f center){
+void ofApp::createMesh(ofVec3f center){
     
     ofMesh mesh;
     

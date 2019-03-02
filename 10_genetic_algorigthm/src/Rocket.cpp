@@ -72,7 +72,15 @@ void Rocket::draw(){
         ofSetColor(255, 0, 0);
     }else{
         ofSetColor(255,255,255,200);
-        ofDrawArrow(position, position + (direction *speed  * 10),4);
+        
+        
+        // quick to fix for OF API change in drawarrow.
+        ofVec3f pos1Vec3 = ofVec3f(position.x,position.y,0);
+        ofVec3f directionVec3 = ofVec3f(direction.x,direction.y,0);
+        ofVec3f pos2Vec3 = pos1Vec3 + (directionVec3 * speed * 10);
+
+        ofDrawArrow(pos1Vec3,pos2Vec3);
+        //ofDrawArrow(position, position + (direction *speed  * 10),4);
     }
     
     ofDrawCircle(position,radius);

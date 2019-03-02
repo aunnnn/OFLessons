@@ -1,3 +1,8 @@
+
+
+*.make
+Makefile
+
 [Bb]uild/
 [Oo]bj/
 *.o

@@ -1,13 +1,11 @@
 # OFLessons
 Samples used in a openframeWorks course which I teach at EHB brussels.
 Covering different topics. 
-Always interested in giving this course at other places if somebody is interested.
-
-Clone this repository in /openframworks/apps/  
-All samples are tested with the latest OF 0.93 on Windows and OSX.  
-Use the project generator to update the solution for your platform.  
-
+Always interested in giving this course at other places.
 Most of the samples can be made fancier or more performant but for educational purpose they are as simple as possible.  
+
+Check the [INSTALL instructions](INSTALL.md)
+
 
 Getting familiar with drawing and setting up new files and classes.
 ![Image](/Images/1_drawSample.png)

@@ -17,7 +17,7 @@ class ofApp : public ofBaseApp{
 
 	public:
     
-        void createMesh(ofVec2f center);
+        void createMesh(ofVec3f center);
     
 		void setup();
 		void update();
