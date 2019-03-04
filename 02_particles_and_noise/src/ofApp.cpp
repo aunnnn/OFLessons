@@ -75,6 +75,8 @@ void ofApp::update(){
         
         // the interpolation factor decides how much we take from new direction.
         interpolationFactor = 0.1;
+        // we calculate the difference between the wanted and current speed.
+        // than use the the interpolationFactor to decide how much we take from the difference
         particles[i].speed += (newSpeed - particles[i].speed) * interpolationFactor;
 
 
