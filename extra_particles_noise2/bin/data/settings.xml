@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<group>
+	<noiseXSampleScale>0.001</noiseXSampleScale>
+	<noiseXSampleScale>0.00001</noiseXSampleScale>
+	<attractionForceIn>0.004</attractionForceIn>
+	<attractionForceOut>0.002479</attractionForceOut>
+	<minSpeed>0.6</minSpeed>
+	<maxSpeed>7</maxSpeed>
+	<speedNoiseFactor>3.4</speedNoiseFactor>
+	<forceRadiusIn>148</forceRadiusIn>
+	<forceRadiusOut>44</forceRadiusOut>
+	<noiseYSampleScale>1e-05</noiseYSampleScale>
+</group>
