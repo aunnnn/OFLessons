@@ -18,9 +18,13 @@ class ofApp : public ofBaseApp{
 
     ofxFloatSlider attractionForceIn;
     ofxFloatSlider attractionForceOut;
+    
+    ofxFloatSlider attractionSpeedAccIn;
+    ofxFloatSlider attractionSpeedAccOut;
 
     ofxFloatSlider forceRadiusIn;
     ofxFloatSlider forceRadiusOut;
+    ofxToggle debugDraw;
 
     
     
@@ -33,6 +37,7 @@ class ofApp : public ofBaseApp{
     void setParticleStartDirection(ofVec2f& incomingDirection);
 
     void resetHorizontal(Particle& p);
+    void resetVertical(Particle& p);
 
     
     void addDirectionNoise(Particle& p);

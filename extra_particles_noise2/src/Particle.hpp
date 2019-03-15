@@ -5,6 +5,13 @@
 class Particle{
   
     float hueOffset;
+    
+    std::list<ofVec2f> trail2;
+    std::list<ofColor> trailColor;
+
+    int trailIndex;
+    int maxTrailSize;
+
 
 public:
     
@@ -15,6 +22,7 @@ public:
     void setup();
     void update();
     void draw();
+    void resetTrail();
     
 };
 

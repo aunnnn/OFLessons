@@ -41,11 +41,11 @@ void ofApp::createMesh(ofVec3f center){
         float angleRad = ofDegToRad(angle);
         float angle2Rad = ofDegToRad(angle + angleStep);
         
-        // zetten het centerpunt
+        // go to center
         mesh.addVertex(center);
         mesh.addTexCoord(ofVec2f(1024*0.5,0));
         
-        // punt 1
+        // add point  1
         ofVec3f p1 = ofVec3f(cos(angleRad) * radius,sin(angleRad) * radius ,0);
         mesh.addVertex(center + p1);
         

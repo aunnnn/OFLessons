@@ -2,12 +2,15 @@
 <group>
 	<noiseXSampleScale>0.001</noiseXSampleScale>
 	<noiseXSampleScale>0.00001</noiseXSampleScale>
-	<attractionForceIn>0.004</attractionForceIn>
-	<attractionForceOut>0.002479</attractionForceOut>
-	<minSpeed>0.6</minSpeed>
-	<maxSpeed>7</maxSpeed>
-	<speedNoiseFactor>3.4</speedNoiseFactor>
-	<forceRadiusIn>148</forceRadiusIn>
-	<forceRadiusOut>44</forceRadiusOut>
-	<noiseYSampleScale>1e-05</noiseYSampleScale>
+	<attractionForceIn>0.012388</attractionForceIn>
+	<attractionForceOut>0.03037</attractionForceOut>
+	<minSpeed>1.2</minSpeed>
+	<maxSpeed>14</maxSpeed>
+	<speedNoiseFactor>3</speedNoiseFactor>
+	<forceRadiusIn>88</forceRadiusIn>
+	<forceRadiusOut>28</forceRadiusOut>
+	<noiseYSampleScale>9.91e-06</noiseYSampleScale>
+	<attractionSpeedAccIn>1.01</attractionSpeedAccIn>
+	<attractionSpeedAccOut>1.0625</attractionSpeedAccOut>
+	<debugDraw>0</debugDraw>
 </group>

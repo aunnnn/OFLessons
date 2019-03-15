@@ -25,6 +25,8 @@ class ofApp : public ofBaseApp{
 
     ofVec2f  position;
     float speed;
+    
+    float targetSpeed;
 
     
     ofxOscReceiver serverReceiver; // OSC receiver

@@ -2,78 +2,75 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-    clientSender.setup("192.168.1.17", 9000);
-    clientReceiver.setup(9001);
+    // use 0.1 coordinates instead of image size
+    ofDisableArbTex();
     
-    id= -1;
-   // ofSetFullscreen(true);
+    // load the image from the data folder
+    image.load("rubens.jpg");
+    
+    // set clamping options.
+    // check http:///open.gl/textures for clamping options
+    image.getTexture().setTextureWrap(GL_CLAMP_TO_BORDER, GL_CLAMP_TO_BORDER);
+    
+    float color[] = {0.0f,0.0f,0.0f,1.0f};
+    glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, color);
+    
+    
     ofSetFrameRate(60);
+    ofSetLineWidth(4);
     
-    //image.load("image.jpg");
+    //    different modes
+    //
+    //    OF_PRIMITIVE_TRIANGLES,
+    //    OF_PRIMITIVE_TRIANGLE_STRIP,
+    //    OF_PRIMITIVE_TRIANGLE_FAN,
+    //    OF_PRIMITIVE_LINES,
+    //    OF_PRIMITIVE_LINE_STRIP,
+    //    OF_PRIMITIVE_LINE_LOOP,
+    //    OF_PRIMITIVE_POINTS
+    
+    mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
+    
+    ofVec3f leftTop(300,100);
+    ofVec3f rightBottom(800,600);
+    
+    mesh.addVertex(leftTop);
+    mesh.addVertex(ofVec3f(leftTop.x,rightBottom.y,0));
+    mesh.addVertex(ofVec3f(rightBottom.x,leftTop.y,0));
+    mesh.addVertex(rightBottom);
+    
+    
+    mesh.addTexCoord(ofVec2f(0,0));
+    mesh.addTexCoord(ofVec2f(0,1));
+    mesh.addTexCoord(ofVec2f(1,0));
+    mesh.addTexCoord(ofVec2f(1,1));
 }
+
+
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    
-    if(id == -1){
-        ofxOscMessage m;
-        m.setAddress("/getId");
-        m.addInt32Arg(ofGetWindowWidth());
-        clientSender.sendMessage(m);
-    }
-    
-    while(clientReceiver.hasWaitingMessages()){
-        // get the next message
-        ofxOscMessage m;
-        clientReceiver.getNextMessage(m);
-        
-        if(m.getAddress() == "/id"){
-            id =  m.getArgAsInt(0);
-            globalWidth =  m.getArgAsInt(1);
-            
-        }
-       
-        
-        if(m.getAddress() == "/broadcast"){
-            if(m.getNumArgs() >= 2){
-                position.x = m.getArgAsFloat(0) - globalWidth;
-                position.y = m.getArgAsFloat(1);
-
-            }
-        }
-    }
 
 }
 
+
 //--------------------------------------------------------------
 void ofApp::draw(){
-    if (id != -1) {
-        ofSetColor(255,255,255);
-
-        ofDrawBitmapString("ID " + ofToString(id), 20, 20);
-        ofDrawBitmapString("width " + ofToString(globalWidth), 20, 40);
-    }
-    
-    ofSetColor(255,210,0);
-    
-    ofPushMatrix();
-    ofTranslate(position);
-    ofDrawCircle(0,0,20);
-    
-    ofRotate(ofGetElapsedTimef()*100.0);
-    ofDrawCircle(20 + fabs(sin(ofGetElapsedTimef() * 4) * 10), 0, 4);
-    ofDrawCircle(-20 - fabs(sin(ofGetElapsedTimef() * -4) * 10), 0, 4);
-    
-    ofPopMatrix();
+    ofSetColor(255, 255, 255);
     
     
+    image.bind();
+    mesh.draw();
+    image.unbind();
     
     
+    ofDrawBitmapStringHighlight(ofToString(ofGetFrameRate()), ofVec2f(10, 20));
+    mesh.drawWireframe();
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
-    id = -1;
+
 }
 
 //--------------------------------------------------------------
