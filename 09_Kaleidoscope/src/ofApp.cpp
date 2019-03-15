@@ -16,13 +16,16 @@ void ofApp::setup(){
     float w = cos(ofDegToRad(angleStep)) * radius;
 
     bool yOffset = false;
-    for(int x = w; x < ofGetWindowWidth(); x += (w*3)){
-        for(int y=h; y < ofGetWindowHeight() + h * 2; y+=(h*2)){
+    
+    float x = 200;
+    float y = 200;
+  //  for(int x = w; x < ofGetWindowWidth(); x += (w*3)){
+    //    for(int y=h; y < ofGetWindowHeight() + h * 2; y+=(h*2)){
             int newY = y + ((yOffset) ? -h : 0);
             createMesh(ofVec2f(x,newY));
-        }        
-        yOffset = !yOffset;
-    }
+      //  }
+       // yOffset = !yOffset;
+   // }
 
 }
 
@@ -78,10 +81,18 @@ void ofApp::draw(){
     
     for(ofMesh& mesh : meshes){
         mesh.draw();
+        mesh.drawWireframe();
+
     }
+    
     
     vidGrabber.getTexture().unbind();
 
-  //  mesh.drawWireframe();
+    
+    for(ofMesh& mesh : meshes){
+        //mesh.draw();
+        mesh.drawWireframe();
+        
+    }
 }
 
