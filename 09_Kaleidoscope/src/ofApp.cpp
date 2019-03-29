@@ -19,13 +19,13 @@ void ofApp::setup(){
     
     float x = 200;
     float y = 200;
-  //  for(int x = w; x < ofGetWindowWidth(); x += (w*3)){
-    //    for(int y=h; y < ofGetWindowHeight() + h * 2; y+=(h*2)){
+    for(int x = w; x < ofGetWindowWidth(); x += (w*3)){
+    for(int y=h; y < ofGetWindowHeight() + h * 2; y+=(h*2)){
             int newY = y + ((yOffset) ? -h : 0);
             createMesh(ofVec2f(x,newY));
-      //  }
-       // yOffset = !yOffset;
-   // }
+        }
+    yOffset = !yOffset;
+    }
 
 }
 
@@ -81,18 +81,9 @@ void ofApp::draw(){
     
     for(ofMesh& mesh : meshes){
         mesh.draw();
-        mesh.drawWireframe();
-
     }
-    
-    
+        
     vidGrabber.getTexture().unbind();
 
-    
-    for(ofMesh& mesh : meshes){
-        //mesh.draw();
-        mesh.drawWireframe();
-        
-    }
 }
 

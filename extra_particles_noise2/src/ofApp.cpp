@@ -79,29 +79,27 @@ void ofApp::setParticleStartDirection(ofVec2f& incomingDirection){
 void ofApp::update(){
 
     
+    
+    // ADDITIONAL FORCES
+    
+    //   ofVec2f mousePos();
+    
+    
+    forces.clear();
+    forces.push_back(ofVec2f(ofGetMouseX(),ofGetMouseY()));
+    
+    for(int i=80; i < 300; i+=80){
+        forces.push_back(ofVec2f(ofGetMouseX() -50,ofGetMouseY() +i));
+        forces.push_back(ofVec2f(ofGetMouseX() + 50,ofGetMouseY() +i));
+        
+    }
+    
     for(int i=0; i < particles.size(); i++){
         
         
  
         addSpeedNoise(particles[i]);
         addDirectionNoise(particles[i]);
-
-        
-        
-        // ADDITIONAL FORCES
-
-     //   ofVec2f mousePos();
-
-        
-        forces.clear();
-        forces.push_back(ofVec2f(ofGetMouseX(),ofGetMouseY()));
-        
-        for(int i=80; i < 300; i+=80){
-            forces.push_back(ofVec2f(ofGetMouseX() -50,ofGetMouseY() +i));
-            forces.push_back(ofVec2f(ofGetMouseX() + 50,ofGetMouseY() +i));
-
-        }
-
         
         
         for(auto forcePosition : forces){

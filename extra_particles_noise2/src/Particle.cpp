@@ -56,7 +56,7 @@ void Particle::draw(){
     // using pow to make big values pop-out more
     float lineLength = fmax(pow(speed,1.2) * .5, 12.4);
    // float lineWidth = ofClamp(5-(pow(speed,1.2) * 0.3), 2.0,4.0);
-    float lineWidth = ofMap((pow(speed,1.2) * 0.3), 1, 11, 39.5, .5,true);
+    float lineWidth = ofMap((pow(speed,1.2) * 0.3), 1, 11, 4.5, .5,true);
 
     ofSetLineWidth(lineWidth);
     ofDrawLine(position, position + (direction * lineLength));
